@@ -1,22 +1,33 @@
 FROM itzg/minecraft-server
 
-# Accept Minecraft EULA
+# Basic configuration
 ENV EULA=TRUE
-
-# Set the server version
 ENV VERSION=1.18.2
-
-# Set the Minecraft server to offline mode for non-premium users
 ENV ONLINE_MODE=false
 
-# Specify the CurseForge server modpack ZIP URL for DawnCraft
+# Specific configuration for modpacks
+ENV TYPE=FORGE
 ENV CF_SERVER_MOD=https://mediafilez.forgecdn.net/files/5224/123/DawnCraft-Serverpack-2.0.14.zip
+ENV FORGEVERSION=40.2.17  
 
-# Expose Minecraft server port
+# Performance settings (recommended memory for modpacks)
+ENV MEMORY=6G
+
+# Network settings
 EXPOSE 25565
 
-# Define volume for persistent data
+# Persistent volume for Minecraft data
 VOLUME ["/data"]
 
-# Set the entrypoint to the base image's startup script
+# Copy the entrypoint script and the world_data folder into the container
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Copy the world_data folder into the container (where your world will be stored)
+COPY world_data /world_data
+
+# Set the entrypoint to the custom script
+ENTRYPOINT ["/entrypoint.sh"]
+
+# Default command (Minecraft server start)
 CMD ["/start"]

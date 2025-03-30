@@ -1,0 +1,17 @@
+{
+	id: "06e49227-654f-3244-991c-0210946e8664"
+	type: "player"
+	player_name: "DevCarlos"
+	ranks: {
+		06e49227-654f-3244-991c-0210946e8664: "owner"
+	}
+	properties: {
+		"ftbteams:display_name": "DevCarlos"
+		"ftbteams:description": ""
+		"ftbteams:color": "#59FF95"
+		"ftbteams:free_to_join": 0b
+		"ftbteams:max_msg_history_size": 1000
+	}
+	message_history: [ ]
+	extra: { }
+}

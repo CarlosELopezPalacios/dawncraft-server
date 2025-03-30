@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build-minecraft": "docker build -t minecraft-modpack .",
-    "start-minecraft": "docker run -d -e MEMORY=5G -p 25565:25565 --name mc-modpack minecraft-modpack",
+    "start-minecraft": "docker run -d -p 25565:25565 --name mc-modpack minecraft-modpack",
     "stop-minecraft": "docker stop mc-modpack",
     "restart-minecraft": "npm run stop && npm run start",
     "logs": "docker logs -f mc-modpack",

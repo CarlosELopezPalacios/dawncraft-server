@@ -3,7 +3,13 @@ FROM itzg/minecraft-server
 # Accept Minecraft EULA
 ENV EULA=TRUE
 
-# Specify the CurseForge server modpack ZIP URL
+# Set the server version
+ENV VERSION=1.18.2
+
+# Set the Minecraft server to offline mode for non-premium users
+ENV ONLINE_MODE=false
+
+# Specify the CurseForge server modpack ZIP URL for DawnCraft
 ENV CF_SERVER_MOD=https://mediafilez.forgecdn.net/files/5224/123/DawnCraft-Serverpack-2.0.14.zip
 
 # Expose Minecraft server port

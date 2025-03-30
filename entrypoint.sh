@@ -12,5 +12,9 @@ else
     echo "World found, starting server..."
 fi
 
+# Fix the permissions on the world folder to allow Minecraft to write to it
+chown -R minecraft:minecraft /data/world
+chmod -R 755 /data/world
+
 # Call the original entrypoint to start the Minecraft server
 exec /start

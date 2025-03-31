@@ -1,27 +1,22 @@
 FROM itzg/minecraft-server
 
+# Accept Minecraft EULA
 ENV EULA=TRUE
-ENV VERSION=1.18.2
-ENV ONLINE_MODE=false
-ENV TYPE=FORGE
-ENV CF_SERVER_MOD=https://mediafilez.forgecdn.net/files/5224/123/DawnCraft-Serverpack-2.0.14.zip
-ENV FORGEVERSION=40.2.17
-ENV LEVEL="New World"
-ENV LEVEL_TYPE=DEFAULT
-ENV SEED=
-ENV GENERATE_STRUCTURES=true
-ENV SPAWN_PROTECTION=0
-ENV MEMORY=6G
 
+# Set the server version to the latest vanilla version (you can specify the latest version or use the default latest)
+ENV VERSION=latest
+
+# Set the Minecraft server to offline mode for non-premium users
+ENV ONLINE_MODE=false
+
+# Expose Minecraft server port
 EXPOSE 25565
 
+# Define volume for persistent data
 VOLUME ["/data"]
 
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+# Copy the server.properties file into the container (if you have a custom one)
+COPY server.properties /data/server.properties
 
-COPY world_data /world_data
-
-ENTRYPOINT ["/entrypoint.sh"]
-
+# Start the Minecraft server
 CMD ["/start"]

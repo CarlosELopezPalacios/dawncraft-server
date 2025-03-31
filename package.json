@@ -2,9 +2,10 @@
   "name": "minecraft-server",
   "version": "1.0.0",
   "scripts": {
-    "build-minecraft": "docker build -t minecraft-modpack .",
-    "start-minecraft": "docker run -d -p 25565:25565 --name mc-modpack minecraft-modpack",
+    "build-minecraft": "docker build -t minecraft-server .",
+    "start-minecraft": "docker compose up -d",
     "stop-minecraft": "docker stop mc-modpack",
+    "start-server": "ngrok tcp 25562",
     "restart-minecraft": "npm run stop && npm run start",
     "logs": "docker logs -f mc-modpack",
     "remove-minecraft": "docker rm -f mc-modpack"
